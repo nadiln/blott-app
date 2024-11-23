@@ -6,11 +6,11 @@ import { fetchHistoricalPlaces } from "@Api/historicalPlaces";
 import ScreenSurface from "@Components/Atoms/ScreenSurface";
 import NavigationTopBar from "@Components/Atoms/NavigationTopBar";
 import { useNavigation } from "@react-navigation/native";
-import { HistoricalPlacesStackProps, HistoricalPlaceStackParamList } from "..";
+import { NewsStackParamList } from "..";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 type HomeScreenProps = {
-  navigation: NativeStackNavigationProp<HistoricalPlaceStackParamList, "HomeScreen">;
+  navigation: NativeStackNavigationProp<NewsStackParamList, "HomeScreen">;
 };
 
 export type Place = {
@@ -44,7 +44,7 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
   };
   return (
     <ScreenSurface>
-      <View className="bg-gray-200 ">
+      <View className="">
         <NavigationTopBar title="Historical Places" />
 
         <View className="mb-44 ">

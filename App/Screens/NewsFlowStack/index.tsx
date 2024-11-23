@@ -3,25 +3,28 @@ import HomeScreen, { Place } from "./HomeScreen";
 import { HistoricalPlacesProvider } from "App/Store/HistoricalPlacesCtx";
 import PlaceDetailScreen from "@Screens/NewsFlowStack/PlaceDetailScreen";
 import { NavigatorScreenParams } from "@react-navigation/native";
+import PersonalInfoScreen from "./PersonalInfoScreen";
 
-export type HistoricalPlaceStackParamList = {
+export type NewsStackParamList = {
+  PersonalInfoScreen?: undefined;
   HomeScreen?: undefined;
   DetailScreen: { place: Place };
 };
 
-const HistoricalPlaceStack = createNativeStackNavigator<HistoricalPlaceStackParamList>();
+const NewsStack = createNativeStackNavigator<NewsStackParamList>();
 
 export type HistoricalPlacesStackProps = object;
 
-function HistoricalPlacesStack({}: HistoricalPlacesStackProps) {
+function NewsFlowStack({}: HistoricalPlacesStackProps) {
   return (
     <HistoricalPlacesProvider>
-      <HistoricalPlaceStack.Navigator screenOptions={{ headerShown: false }}>
-        <HistoricalPlaceStack.Screen name="HomeScreen" component={HomeScreen} />
-        <HistoricalPlaceStack.Screen name="DetailScreen" component={PlaceDetailScreen} />
-      </HistoricalPlaceStack.Navigator>
+      <NewsStack.Navigator screenOptions={{ headerShown: false }}>
+        <NewsStack.Screen name="PersonalInfoScreen" component={PersonalInfoScreen} />
+        <NewsStack.Screen name="HomeScreen" component={HomeScreen} />
+        <NewsStack.Screen name="DetailScreen" component={PlaceDetailScreen} />
+      </NewsStack.Navigator>
     </HistoricalPlacesProvider>
   );
 }
 
-export default HistoricalPlacesStack;
+export default NewsFlowStack;
