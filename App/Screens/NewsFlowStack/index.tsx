@@ -1,0 +1,27 @@
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen, { Place } from "./HomeScreen";
+import { HistoricalPlacesProvider } from "App/Store/HistoricalPlacesCtx";
+import PlaceDetailScreen from "@Screens/NewsFlowStack/PlaceDetailScreen";
+import { NavigatorScreenParams } from "@react-navigation/native";
+
+export type HistoricalPlaceStackParamList = {
+  HomeScreen?: undefined;
+  DetailScreen: { place: Place };
+};
+
+const HistoricalPlaceStack = createNativeStackNavigator<HistoricalPlaceStackParamList>();
+
+export type HistoricalPlacesStackProps = object;
+
+function HistoricalPlacesStack({}: HistoricalPlacesStackProps) {
+  return (
+    <HistoricalPlacesProvider>
+      <HistoricalPlaceStack.Navigator screenOptions={{ headerShown: false }}>
+        <HistoricalPlaceStack.Screen name="HomeScreen" component={HomeScreen} />
+        <HistoricalPlaceStack.Screen name="DetailScreen" component={PlaceDetailScreen} />
+      </HistoricalPlaceStack.Navigator>
+    </HistoricalPlacesProvider>
+  );
+}
+
+export default HistoricalPlacesStack;
